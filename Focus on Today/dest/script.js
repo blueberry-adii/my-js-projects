@@ -7,6 +7,7 @@ const errorBox = document.querySelector('.error');
 const tasks = document.querySelectorAll('.task');
 const checks = document.querySelectorAll('.check');
 const inputs = document.body.querySelectorAll('input');
+const resetButton = document.querySelector('#reset');
 const allQuotes = [
     'Raise the bar by completing your goals!',
     'Well begun is half done!',
@@ -20,18 +21,6 @@ const allGoals = JSON.parse(localStorage.getItem('allGoals')) || [
 ];
 let progressValue = 0;
 progressValueInLabel.textContent = `${progressValue}/3 completed`;
-function initializeUI() {
-    allGoals.forEach((goal, index) => {
-        var _a;
-        inputs[index].value = goal.name;
-        if (goal.completed) {
-            (_a = checks[index].parentElement) === null || _a === void 0 ? void 0 : _a.classList.add('checked');
-            inputs[index].disabled = true;
-        }
-    });
-    activeChecks();
-    progressBarChange();
-}
 checks.forEach((check) => {
     check.addEventListener("click", (e) => {
         var _a, _b;
@@ -69,6 +58,21 @@ for (let i = 0; i < inputs.length; i++) {
         updateLocalStorage();
     });
 }
+resetButton.addEventListener('click', () => {
+    allGoals.forEach((goal, index) => {
+        var _a;
+        goal.completed = false;
+        goal.name = '';
+        inputs[index].value = '';
+        inputs[index].disabled = false;
+        (_a = checks[index].parentElement) === null || _a === void 0 ? void 0 : _a.classList.remove('checked');
+    });
+    progressValue = 0;
+    progressValueInLabel.textContent = `${progressValue}/3 completed`;
+    progressLabel.textContent = allQuotes[progressValue];
+    progressBarChange();
+    updateLocalStorage();
+});
 function activeChecks() {
     progressValue = 0;
     let checkedList = document.querySelectorAll('.checked');
@@ -91,5 +95,17 @@ function progressBarChange() {
 }
 function updateLocalStorage() {
     localStorage.setItem('allGoals', JSON.stringify(allGoals));
+}
+function initializeUI() {
+    allGoals.forEach((goal, index) => {
+        var _a;
+        inputs[index].value = goal.name;
+        if (goal.completed) {
+            (_a = checks[index].parentElement) === null || _a === void 0 ? void 0 : _a.classList.add('checked');
+            inputs[index].disabled = true;
+        }
+    });
+    activeChecks();
+    progressBarChange();
 }
 initializeUI();
