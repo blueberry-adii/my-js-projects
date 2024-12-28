@@ -1,0 +1,272 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    background-color: rgba(72, 163, 0, 0.07);
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #48a300;
+    margin: 20px 0;
+}
+
+.title span {
+    color: #61481c;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: #fbfbfb;
+    width: 80vw;
+    padding: 16px 32px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.app-header {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.app-header h2 {
+    font-weight: 700;
+    color: #000000;
+    display: inline-block;
+}
+
+.sun-icon {
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+.progress-label {
+    text-align: left;
+    color: #858585;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: rgba(72, 163, 0, 0.1);
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-value {
+    width: 0;
+    height: 100%;
+    background-color: #48a300;
+    border-radius: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.progress-value span {
+    position: absolute;
+    visibility: hidden;
+    margin-left: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #ffffff;
+    transition: all 0.4s ease-in-out;
+}
+
+.error {
+    text-align: left;
+    color: tomato;
+    font-size: 14px;
+    visibility: hidden;
+    margin: 6px 4px;
+}
+
+.error.active {
+    visibility: visible;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    height: 65px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+    border-radius: 15px;
+}
+
+.check {
+    display: inline-block;
+    min-height: 20px;
+    min-width: 20px;
+    border-radius: 100%;
+    border: 2px solid #85858566;
+    margin: 0 14px;
+    cursor: pointer;
+}
+
+.checked span {
+    background-color: #48a300;
+    border: #48a300;
+    background-image: url(./img/check-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.checked input {
+    text-decoration: line-through;
+    color: #48a300;
+}
+
+
+.task input {
+    font-weight: 500;
+    border: none;
+    outline: none;
+    /* background-color: tomato; */
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    cursor: text;
+}
+
+.tbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#quote {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+#made {
+    font-size: 10px;
+    color: #858585;
+    margin: 10px 0;
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 38px;
+    }
+    .app-header{
+        text-align: center;
+    }
+    .app-container {
+        width: 100%;
+    }
+    .progress-label {
+        text-align: center;
+    }
+}
+
+@media (min-width: 724px) {
+    .title {
+        font-size: 68px;
+    }
+    .app-container {
+        width: 80%;
+        height: 80%;
+    }
+    .app-header {
+        font-size: 22px;
+    }
+    .progress-label {
+        text-align: left;
+        font-size: 18px;
+    }
+    .progress-bar {
+        height: 40px;
+    }
+    .progress-value span {
+        font-size: 14px;
+    }
+    .task {
+        height: 80px;
+    }
+    .check {
+        min-height: 30px;
+        min-width: 30px;
+    }
+    .task input {
+        font-size: 18px;
+    }
+    #quote {
+        font-size: 20px;
+    }
+    #made {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 350px) {
+    .title {
+        font-size: 24px;
+    }
+    .app-header{
+        text-align: center;
+    }
+    .app-container {
+        width: 100%;
+    }
+    .progress-label {
+        text-align: center;
+    }
+    .app-header {
+        font-size: 14px;
+    }
+    .progress-label {
+        text-align: left;
+        font-size: 10px;
+    }
+    .error {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    .progress-bar {
+        height: 25px;
+    }
+    .progress-value span {
+        font-size: 8px;
+    }
+    .task {
+        height: 30px;
+        border-radius: 8px;
+    }
+    .check {
+        min-height: 20px;
+        min-width: 20px;
+    }
+    .task input {
+        font-size: 14px;
+    }
+    #quote {
+        font-size: 10px;
+    }
+    #made {
+        font-size: 6px;
+    }
+}
