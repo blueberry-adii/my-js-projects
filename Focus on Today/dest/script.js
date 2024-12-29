@@ -21,7 +21,7 @@ const allGoals = JSON.parse(localStorage.getItem('allGoals')) || [
 ];
 let progressValue = 0;
 progressValueInLabel.textContent = `${progressValue}/3 completed`;
-checks.forEach((check) => {
+checks.forEach((check, index) => {
     check.addEventListener("click", (e) => {
         var _a, _b;
         const allGoalsAdded = [...inputs].every(function (input) {
@@ -29,7 +29,6 @@ checks.forEach((check) => {
         });
         if (allGoalsAdded) {
             (_a = check.parentElement) === null || _a === void 0 ? void 0 : _a.classList.toggle("checked");
-            let index = [...checks].indexOf(check);
             activeChecks();
             progressBarChange();
             if ((_b = check.parentElement) === null || _b === void 0 ? void 0 : _b.classList.contains('checked')) {
@@ -52,12 +51,18 @@ inputs.forEach((input) => {
         errorBox.classList.remove("active");
     });
 });
-for (let i = 0; i < inputs.length; i++) {
-    [...inputs][i].addEventListener('input', () => {
-        allGoals[i].name = inputs[i].value;
+// for (let i = 0; i < inputs.length; i++) {
+//     [...inputs][i].addEventListener('input', ()=>{
+//         allGoals[i].name = inputs[i].value;
+//         updateLocalStorage();
+//     })
+// }
+inputs.forEach((input, index) => {
+    input.addEventListener('input', () => {
+        allGoals[index].name = input.value;
         updateLocalStorage();
     });
-}
+});
 resetButton.addEventListener('click', () => {
     allGoals.forEach((goal, index) => {
         var _a;

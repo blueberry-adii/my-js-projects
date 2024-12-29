@@ -26,14 +26,13 @@ const allGoals: data[] = JSON.parse((localStorage.getItem('allGoals') as string)
 let progressValue = 0;
 progressValueInLabel.textContent = `${progressValue}/3 completed`;
 
-checks.forEach((check) => {
+checks.forEach((check, index) => {
     check.addEventListener("click", (e)=>{
         const allGoalsAdded = [...inputs].every(function (input) {
             return input.value;
         })
         if(allGoalsAdded){
             check.parentElement?.classList.toggle("checked");
-            let index = [...checks].indexOf(check);
             activeChecks();
             progressBarChange();
             if(check.parentElement?.classList.contains('checked')){
@@ -56,12 +55,19 @@ inputs.forEach((input)=>{
     })
 })
 
-for (let i = 0; i < inputs.length; i++) {
-    [...inputs][i].addEventListener('input', ()=>{
-        allGoals[i].name = inputs[i].value;
+// for (let i = 0; i < inputs.length; i++) {
+//     [...inputs][i].addEventListener('input', ()=>{
+//         allGoals[i].name = inputs[i].value;
+//         updateLocalStorage();
+//     })
+// }
+
+inputs.forEach((input, index) => {
+    input.addEventListener('input', ()=>{
+        allGoals[index].name = input.value;
         updateLocalStorage();
     })
-}
+})
 
 resetButton.addEventListener('click', ()=>{
     allGoals.forEach((goal, index) => {
