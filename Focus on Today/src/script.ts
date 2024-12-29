@@ -84,7 +84,7 @@ resetButton.addEventListener('click', ()=>{
     updateLocalStorage();
 })
 
-function activeChecks(){
+function activeChecks():void{
     progressValue=0;
     let checkedList = document.querySelectorAll('.checked');
     progressValue = checkedList.length;
@@ -92,7 +92,7 @@ function activeChecks(){
     progressLabel.textContent = allQuotes[progressValue]; 
 }
 
-function progressBarChange(){
+function progressBarChange():void{
     progressValueInBar.style.width = `${(progressValue/3)*100}%`
     if(progressValue===0){
         setTimeout(()=>{
@@ -105,11 +105,11 @@ function progressBarChange(){
     }
 }
 
-function updateLocalStorage(){
+function updateLocalStorage():void{
     localStorage.setItem('allGoals', JSON.stringify(allGoals));
 }
 
-function initializeUI() {
+function initializeUI():void{
     allGoals.forEach((goal, index) => {
         inputs[index].value = goal.name;
         if (goal.completed) {
