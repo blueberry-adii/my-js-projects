@@ -84,8 +84,6 @@ resetButton.addEventListener('click', ()=>{
     updateLocalStorage();
 })
 
-initializeUI();
-
 function activeChecks():void{
     progressValue=0;
     let checkedList = document.querySelectorAll('.checked');
@@ -122,3 +120,5 @@ function initializeUI():void{
     activeChecks();
     progressBarChange();
 }
+
+initializeUI();

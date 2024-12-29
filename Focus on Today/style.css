@@ -85,12 +85,13 @@ body {
 }
 
 .progress-value span {
-    position: absolute;
+    min-width: max-content;
     visibility: hidden;
     margin-left: 8px;
     font-size: 10px;
     font-weight: 600;
     color: #ffffff;
+    overflow: hidden;
     transition: all 0.4s ease-in-out;
 }
 
@@ -150,6 +151,11 @@ body {
     cursor: text;
 }
 
+.task input::placeholder {
+    color: #858585be;
+    font-weight: 500;
+}
+
 .tbox {
     display: flex;
     flex-direction: column;
@@ -201,6 +207,9 @@ body {
 }
 
 @media (min-width: 724px) {
+    body {
+        height: 120vh;
+    }
     .title {
         font-size: 68px;
     }
